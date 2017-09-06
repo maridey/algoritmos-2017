@@ -1,0 +1,46 @@
+
+// primer parcial11.cpp : Defines the entry point for the console application.
+//
+
+// ejercicio 3
+
+
+
+#include "stdafx.h"
+#include <iostream>
+#include "math.h"
+#include "conio.h"
+#include <string>
+#define MAX 1000
+
+using namespace std;
+string centrar(string c,int n);
+
+void main()
+{
+	string frase;
+	int n;
+	string r;
+	cout << "Ingrese la cadena de caracteres: ";
+	getline(cin,frase);
+	cout << "Ingrese el ancho: ";
+	cin >> n;
+	r= centrar(frase,n);
+	cout<<r<<endl;
+	
+	system("pause");
+}
+
+string centrar(string c,int n)
+{
+string r="";
+for(int i=0;i<(n/2-c.length()/2);i++)
+{
+r=r+"*";
+
+}
+r=r+c;
+return r;
+}
+
+
