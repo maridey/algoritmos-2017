@@ -1,0 +1,99 @@
+// primer parcial.cpp : Defines the entry point for the console application.
+
+//ejercicio 2
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include <math.h>
+#include <stdio.h>
+using namespace std;
+
+int potencia(int a,int b);
+int RetornarImpar(int i);
+float Operacion(int x, int n);
+int FAC(int n);
+int POTENCIA(int a, int b);
+
+void main()
+{
+
+	int x, n;
+	float p;
+	cout << "Ingrese el primer dato: ";
+	do
+	{
+		cin >> x;
+	} while (x<0);
+	cout << "Ingrese el segundo dato:";
+	do
+	{
+		cin >> n;
+	} while (n<0);
+
+	p= 2 + Operacion(x,n);
+	cout<<"El Resultado es:"<<p;
+	_getch();
+	
+
+}
+
+
+int POTENCIA(int a, int b)
+{
+	int r=1;
+	for(int i=0;i<b;i++)
+		{r = a*r;}
+	return r;
+}
+int FAC(int n)
+{
+	int i = 1, r = 1;
+	while (i <= n)
+	{
+		r = i*r;
+		i++;
+	}
+	return r;
+}
+int RetornarImpar(int i)
+{
+	int imp = 1;
+	if (i==1)
+	{
+		return 1;
+	}
+	else
+	{
+		for (int j=1;j<i;j++)
+		{
+			imp = imp + 2;
+		}
+	}
+	return imp;
+}
+float Operacion(int x, int n)
+{
+	float S = 0;
+	float a, b;
+	bool bandera = true;
+	int impar = 0;
+	for (int i = 1; i <= n; i++)
+	{
+		impar = RetornarImpar(i);
+		if (bandera == true)
+		{
+			a = POTENCIA(x, impar);
+			b = FAC(impar);
+			S = S + (a / b);
+			bandera = false;
+		}
+		else
+		{
+			a = POTENCIA(x, impar);
+			b = FAC(impar);
+			S = S - (a / b);
+			bandera = true;
+		}
+	}
+	return S;}
