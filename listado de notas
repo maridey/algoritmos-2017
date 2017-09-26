@@ -1,0 +1,101 @@
+// struct varios.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include <string>
+#include "stdlib.h"
+#define max 100
+
+using namespace std;
+
+struct t_empleado{
+
+int nro_empleado;
+string nombre;
+string apellido;
+int parcial_1;
+int parcial_2;
+int parcial_3;
+int nota_practica;
+int examen_final;
+};
+
+void cargart_empleado(t_empleado vector[], int n);
+void mostrart_empleado(t_empleado vector[], int n);
+float promedio_parcial(t_empleado vector[], int n);
+
+void main()
+{int n;
+int cont=0;
+t_empleado vector[max];
+do{
+cout<<"cantidad de empleados";
+cin>>n;
+}
+while (n<0 || n>max);
+
+ cargart_empleado( vector,  n);
+ mostrart_empleado( vector, n);
+ getch();
+}
+
+
+void cargart_empleado(t_empleado vector[], int n)
+{
+cin.ignore();
+for (int i=0;i<n;i++)
+{
+vector[i].nro_empleado=i+1;
+cout<<"ingrese nombre: ";
+getline(cin,vector[i].nombre);
+cout<<"ingrese apellido: ";
+getline(cin,vector[i].apellido);
+cout<<"ingrese primer parcial ";
+cin>>vector[i].parcial_1;
+cout<<"ingrese segundo parcial: ";
+cin>>vector[i].parcial_2;
+cout<<"ingrese tercer parcial ";
+cin>>vector[i].parcial_3;
+cout<<"ingrese nota practica ";
+cin>>vector[i].nota_practica;
+cout<<"ingrese nota de examen final ";
+cin>>vector[i].examen_final;
+cout<<"\n";
+cin.ignore();
+}
+}
+
+float promedio_parcial(t_empleado vector[], int i)
+{ float prom;
+
+
+
+	prom=(vector[i].parcial_1+vector[i].parcial_2+vector[i].parcial_3)/3.0;
+
+return prom;
+}
+
+
+
+
+
+void mostrart_empleado(t_empleado vector[], int n)
+{
+
+	cout<<"                        ******* Listado de notas*******                "<<endl;
+	cout<<"nro nombre             apellido             NP       PP       EF        NF"<<endl;
+    cout<<"______________________________________________________________________________"<<endl; 
+for (int i=0;i<n;i++)
+{
+cout<<endl<<vector[i].nro_empleado<<"\t";
+cout<<vector[i].nombre<<"\t";
+cout<<vector[i].apellido<<"\t";
+cout<<vector[i].nota_practica<<"\t";
+cout<<promedio_parcial(vector,i)<<"\t";
+cout<<vector[i].examen_final<<"\t";
+
+cout<<(vector[i].nota_practica*0.2)+(promedio_parcial(vector,i)*0.4)+(vector[i].examen_final*0.4)<<"\t";
+}
+}
