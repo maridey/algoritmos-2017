@@ -1,0 +1,80 @@
+// struct varios.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include <string>
+#include "stdlib.h"
+#define max 100
+
+using namespace std;
+
+struct t_empleado{
+
+int nro_empleado;
+string nombre;
+string apellido;
+string direccion;
+int telefono;
+int celular;
+float salario_bruto;
+};
+
+void cargart_empleado(t_empleado vector[], int n);
+void mostrart_empleado(t_empleado vector[], int n);
+
+
+void main()
+{int n;
+int cont=0;
+t_empleado vector[max];
+do{
+cout<<"cantidad de empleados";
+cin>>n;
+}
+while (n<0 || n>max);
+
+ cargart_empleado( vector,  n);
+ mostrart_empleado( vector, n);
+ getch();
+}
+
+
+void cargart_empleado(t_empleado vector[], int n)
+{
+cin.ignore();
+for (int i=0;i<n;i++)
+{
+vector[i].nro_empleado=i+1;
+cout<<"ingrese nombre: ";
+getline(cin,vector[i].nombre);
+cout<<"ingrese apellido: ";
+getline(cin,vector[i].apellido);
+cout<<"ingrese direccion: ";
+getline(cin,vector[i].direccion);
+cout<<"ingrese telefono: ";
+cin>>vector[i].telefono;
+cout<<"ingrese numerode celular: ";
+cin>>vector[i].celular;
+cout<<"salario bruto: ";
+cin>>vector[i].salario_bruto;
+cout<<"\n";
+cin.ignore();
+}
+}
+
+void mostrart_empleado(t_empleado vector[], int n)
+{
+for (int i=0;i<n;i++)
+{
+cout<<endl<<vector[i].nro_empleado<<"\t";
+cout<<vector[i].nombre<<"\t";
+cout<<vector[i].apellido<<"\t";
+cout<<vector[i].direccion<<"\t";
+cout<<vector[i].telefono<<"\t";
+cout<<vector[i].celular<<"\t";
+cout<<vector[i].salario_bruto<<endl;
+
+}
+}
